@@ -1,19 +1,24 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useRef } from "react";
 
-export default function Slideshow({ images }) {
+type SlideshowProps = {
+  images: string[];
+};
+
+export default function Slideshow({ images }: SlideshowProps) {
   const [index, setIndex] = useState(0);
   const [fullscreen, setFullscreen] = useState(false);
-  const touchStartX = useRef(null);
+  const touchStartX = useRef<number | null>(null);
 
   const next = () => setIndex((index + 1) % images.length);
   const prev = () => setIndex((index - 1 + images.length) % images.length);
 
   // Swipe
-  const handleTouchStart = (e) => {
+  const handleTouchStart = (e: React.TouchEvent<HTMLDivElement>) => {
     touchStartX.current = e.touches[0].clientX;
   };
 
-  const handleTouchEnd = (e) => {
+  const handleTouchEnd = (e: React.TouchEvent<HTMLDivElement>) => {
+    if (touchStartX.current === null) return;
     const diff = e.changedTouches[0].clientX - touchStartX.current;
     if (diff > 50) prev();
     if (diff < -50) next();
@@ -31,11 +36,12 @@ export default function Slideshow({ images }) {
         <img
           src={images[index]}
           className="w-full h-full object-cover transition-opacity duration-500"
+          alt="picture"
         />
 
         {/* Strelice */}
         <button
-          onClick={(e) => {
+          onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
             e.stopPropagation();
             prev();
           }}
@@ -45,7 +51,7 @@ export default function Slideshow({ images }) {
         </button>
 
         <button
-          onClick={(e) => {
+          onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
             e.stopPropagation();
             next();
           }}
@@ -56,7 +62,7 @@ export default function Slideshow({ images }) {
 
         {/* Točkice */}
         <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
-          {images.map((_, i) => (
+          {images.map((_: string, i: number) => (
             <div
               key={i}
               className={`w-3 h-3 rounded-full transition-all ${
@@ -76,11 +82,12 @@ export default function Slideshow({ images }) {
           <img
             src={images[index]}
             className="max-w-[90%] max-h-[90%] object-contain"
+            alt="picture"
           />
 
           {/* Strelice u fullscreen modu */}
           <button
-            onClick={(e) => {
+            onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
               e.stopPropagation();
               prev();
             }}
@@ -90,7 +97,7 @@ export default function Slideshow({ images }) {
           </button>
 
           <button
-            onClick={(e) => {
+            onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
               e.stopPropagation();
               next();
             }}
