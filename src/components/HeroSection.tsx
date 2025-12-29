@@ -1,13 +1,13 @@
 export default function HeroSection() {
   return (
-    <section className="relative h-screen w-screen bg-[url('./assets/okucnica.jpg')] bg-center bg-cover flex items-center">
+    <section className="relative h-screen w-full bg-[url('./assets/okucnica.jpg')] bg-center bg-cover flex items-center">
       {/* Overlay gradient for readability */}
       <div className="absolute inset-0 bg-linear-to-t from-black/60 via-black/20 to-transparent"></div>
 
       {/* Content */}
       <div className="relative z-10 max-w-3xl px-8 md:px-16">
         {/* Naslov */}
-        <h1 className="hero-fade text-4xl md:text-4xl lg:text-6xl font-bold text-white leading-tight drop-shadow-xl text-wrap">
+        <h1 className="hero-fade text-4xl lg:text-6xl font-bold text-white leading-tight drop-shadow-xl text-wrap">
           BEZBRIŽAN UŽITAK U BOROVOJ ŠUMI
         </h1>
 
@@ -19,7 +19,7 @@ export default function HeroSection() {
         </p>
 
         {/* Gumb */}
-        <button className="hero-fade-delay-2 mt-8 px-6 py-3 bg-black ackdrop-blur-md text-white font-semibold rounded-full border border-white/40 hover:bg-black/80 transition-all duration-300  cursor-pointer hover:-translate-y-1.5">
+        <button className="hero-fade-delay-2 mt-8 px-6 py-3 bg-black ackdrop-blur-md text-white font-semibold rounded-full border border-white/40 hover:bg-black/80 transition-all duration-300  cursor-pointer hover:-translate-y-1.5 text-xl">
           Rezerviraj odmah
         </button>
       </div>

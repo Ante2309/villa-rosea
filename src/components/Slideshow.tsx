@@ -1,4 +1,5 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
+import { createPortal } from "react-dom";
 
 type SlideshowProps = {
   images: string[];
@@ -7,12 +8,13 @@ type SlideshowProps = {
 export default function Slideshow({ images }: SlideshowProps) {
   const [index, setIndex] = useState(0);
   const [fullscreen, setFullscreen] = useState(false);
+  const [fade, setFade] = useState(false);
   const touchStartX = useRef<number | null>(null);
 
   const next = () => setIndex((index + 1) % images.length);
   const prev = () => setIndex((index - 1 + images.length) % images.length);
 
-  // Swipe
+  // Swipe (normal mode)
   const handleTouchStart = (e: React.TouchEvent<HTMLDivElement>) => {
     touchStartX.current = e.touches[0].clientX;
   };
@@ -24,12 +26,62 @@ export default function Slideshow({ images }: SlideshowProps) {
     if (diff < -50) next();
   };
 
+  // Swipe (fullscreen mode)
+  const handleFullscreenTouchStart = (e: React.TouchEvent<HTMLDivElement>) => {
+    touchStartX.current = e.touches[0].clientX;
+  };
+
+  const handleFullscreenTouchEnd = (e: React.TouchEvent<HTMLDivElement>) => {
+    if (touchStartX.current === null) return;
+    const diff = e.changedTouches[0].clientX - touchStartX.current;
+    if (diff > 50) prev();
+    if (diff < -50) next();
+  };
+
+  // ESC + arrow keys
+  useEffect(() => {
+    if (!fullscreen) return;
+
+    const handleKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") closeFullscreen();
+      if (e.key === "ArrowRight") next();
+      if (e.key === "ArrowLeft") prev();
+    };
+
+    window.addEventListener("keydown", handleKey);
+    return () => window.removeEventListener("keydown", handleKey);
+  }, [fullscreen, index]);
+
+  // Disable scroll + prevent layout shift
+  useEffect(() => {
+    if (fullscreen) {
+      const scrollbarWidth =
+        window.innerWidth - document.documentElement.clientWidth;
+
+      document.body.style.overflow = "hidden";
+      document.body.style.paddingRight = `${scrollbarWidth}px`;
+    } else {
+      document.body.style.overflow = "auto";
+      document.body.style.paddingRight = "0px";
+    }
+  }, [fullscreen]);
+
+  const openFullscreen = () => {
+    setFullscreen(true);
+    setTimeout(() => setFade(true), 10);
+  };
+
+  const closeFullscreen = () => {
+    setFade(false);
+    setTimeout(() => setFullscreen(false), 200);
+  };
+
   return (
     <>
       {/* Slideshow */}
       <div
         className="relative w-full h-[480px] overflow-hidden rounded-xl shadow-xl cursor-pointer"
-        onClick={() => setFullscreen(true)}
+        onClick={openFullscreen}
         onTouchStart={handleTouchStart}
         onTouchEnd={handleTouchEnd}
       >
@@ -41,72 +93,78 @@ export default function Slideshow({ images }: SlideshowProps) {
 
         {/* Strelice */}
         <button
-          onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
+          onClick={(e) => {
             e.stopPropagation();
             prev();
           }}
-          className="absolute left-3 top-1/2 -translate-y-1/2 bg-black/40 text-white px-3 py-2 rounded-full hover:bg-black/60 text-xl cursor-pointer"
+          className="absolute left-3 top-1/2 -translate-y-1/2 text-white hover:text-emerald-300 text-6xl cursor-pointer transition-transform hover:scale-110"
         >
           ‹
         </button>
 
         <button
-          onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
+          onClick={(e) => {
             e.stopPropagation();
             next();
           }}
-          className="absolute right-3 top-1/2 -translate-y-1/2 bg-black/40 text-white px-3 py-2 rounded-full hover:bg-black/60 text-xl cursor-pointer"
+          className="absolute right-3 top-1/2 -translate-y-1/2 text-white hover:text-emerald-300 text-6xl cursor-pointer transition-transform hover:scale-110"
         >
           ›
         </button>
 
         {/* Točkice */}
         <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
-          {images.map((_: string, i: number) => (
+          {images.map((_, i) => (
             <div
               key={i}
-              className={`w-3 h-3 rounded-full transition-all ${
-                i === index ? "bg-white" : "bg-white/40"
+              className={`w-2 h-2 rounded-full transition-all ${
+                i === index ? "bg-white scale-125" : "bg-white/40"
               }`}
             ></div>
           ))}
         </div>
       </div>
 
-      {/* FULLSCREEN */}
-      {fullscreen && (
-        <div
-          className="fixed inset-0 bg-black/90 flex items-center justify-center z-50"
-          onClick={() => setFullscreen(false)}
-        >
-          <img
-            src={images[index]}
-            className="max-w-[90%] max-h-[90%] object-contain"
-            alt="picture"
-          />
-
-          {/* Strelice u fullscreen modu */}
-          <button
-            onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
-              e.stopPropagation();
-              prev();
-            }}
-            className="absolute left-10 top-1/2 -translate-y-1/2 text-white hover:text-gray-300 cursor-pointer text-5xl"
+      {/* FULLSCREEN preko PORTALA */}
+      {fullscreen &&
+        createPortal(
+          <div
+            className={`fixed inset-0 flex items-center justify-center backdrop-blur-md bg-black/80 transition-opacity duration-300 z-9999 ${
+              fade ? "opacity-100" : "opacity-0"
+            }`}
+            onClick={closeFullscreen}
+            onTouchStart={handleFullscreenTouchStart}
+            onTouchEnd={handleFullscreenTouchEnd}
           >
-            ‹
-          </button>
+            <img
+              src={images[index]}
+              className="max-w-[90%] max-h-[90%] object-contain transition-transform duration-300 scale-100 hover:scale-[1.02]"
+              alt="picture"
+            />
 
-          <button
-            onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
-              e.stopPropagation();
-              next();
-            }}
-            className="absolute right-10 top-1/2 -translate-y-1/2 text-white hover:text-gray-300 cursor-pointer text-5xl"
-          >
-            ›
-          </button>
-        </div>
-      )}
+            {/* Strelice u fullscreen modu */}
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                prev();
+              }}
+              className="absolute left-10 top-1/2 -translate-y-1/2 text-white hover:text-emerald-300 text-6xl cursor-pointer transition-transform hover:scale-125"
+            >
+              ‹
+            </button>
+
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                next();
+              }}
+              className="absolute right-10 top-1/2 -translate-y-1/2 text-white hover:text-emerald-300 text-6xl cursor-pointer transition-transform hover:scale-125"
+            >
+              ›
+            </button>
+          </div>,
+          document.body
+        )}
     </>
   );
 }

@@ -25,6 +25,7 @@ function App() {
 
     elements.forEach((el) => observer.observe(el));
   }, []);
+
   return (
     <div>
       <ScrollToTop />

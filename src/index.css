@@ -13,6 +13,13 @@ body {
     transform: translateY(0);
   }
 }
+html {
+  scroll-behavior: smooth;
+}
+html,
+body {
+  overflow-x: visible !important;
+}
 
 .fade-down {
   animation: fadeDown 0.9s ease-out forwards;

@@ -43,13 +43,11 @@ export default function Apartments() {
 
           {/* APARTMAN 1 */}
           <div className="relative flex flex-col items-center text-center">
-            {/* Ogroman broj iza */}
-            <div className="fade-trigger absolute -top-55 -left-17 text-[360px] font-bold text-black/5 select-none">
+            <div className="fade-trigger absolute -bottom-40 -left-10 text-[300px] md:text-[360px] font-bold text-black/5 select-none  max-w-full">
               1
             </div>
-
             {/* Slika */}
-            <div className="fade-trigger relative z-10 w-full max-w-md overflow-hidden rounded-xl shadow-xl">
+            <div className="fade-trigger relative w-full max-w-md rounded-xl shadow-xl">
               <Slideshow images={velikiImages} />
             </div>
 
@@ -145,7 +143,7 @@ export default function Apartments() {
                 <div className="w-16 h-1 bg-black mt-2 rounded-full"></div>
               </div>
 
-              <button className="fade-trigger mt-6 px-6 py-3 bg-black text-white rounded-full hover:bg-black/80 transition cursor-pointer hover:-translate-y-1.5 duration-300">
+              <button className="fade-trigger mt-6 px-6 py-3 text-xl bg-black text-white rounded-full transition cursor-pointer hover:-translate-y-1.5 duration-300 font-semibold">
                 Pošalji upit
               </button>
             </div>
@@ -153,13 +151,11 @@ export default function Apartments() {
 
           {/* APARTMAN 2 */}
           <div className=" relative flex flex-col items-center text-center">
-            {/* broj iza */}
-            <div className="fade-trigger absolute bottom-50 -right-17 text-[360px] font-bold text-black/5 select-none">
+            <div className="fade-trigger absolute -bottom-40 -right-5 text-[300px] md:text-[360px] font-bold text-black/5 select-none overflow-hidden max-w-full">
               2
             </div>
-
             {/* Slideshow */}
-            <div className="fade-trigger relative w-full max-w-md overflow-hidden rounded-xl shadow-xl">
+            <div className="fade-trigger relative w-full max-w-md rounded-xl shadow-xl">
               <Slideshow images={maliImages} />
             </div>
 
@@ -255,7 +251,7 @@ export default function Apartments() {
                 <div className="w-16 h-1 bg-black mt-2 rounded-full"></div>
               </div>
 
-              <button className="fade-trigger mt-6 px-6 py-3 bg-black text-white rounded-full hover:bg-black/80 transition cursor-pointer hover:-translate-y-1.5 duration-300">
+              <button className="fade-trigger mt-6 px-6 py-3 bg-black text-white rounded-full transition cursor-pointer hover:-translate-y-1.5 duration-300 font-semibold text-xl">
                 Pošalji upit
               </button>
             </div>
