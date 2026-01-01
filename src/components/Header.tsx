@@ -138,7 +138,11 @@ export default function Header() {
         <div className="flex items-center justify-center gap-2 md:hidden">
           {/* Mobile LANG */}
           <div className="relative lang-dropdown">
-            <button onClick={() => setLangOpen(!langOpen)}>
+            <button
+              type="button"
+              aria-label="Change language"
+              onClick={() => setLangOpen(!langOpen)}
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 640 640"
