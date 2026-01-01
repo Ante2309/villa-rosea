@@ -1,6 +1,9 @@
 export default function Contact() {
   return (
-    <section className="relative w-full bg-white py-24 px-6 md:px-32 bg-[url('./assets/birdview.jpg')] bg-cover bg-center">
+    <section
+      id="kontakt"
+      className="relative w-full bg-white py-24 px-6 md:px-32 bg-[url('./assets/birdview.jpg')] bg-cover bg-center"
+    >
       {/* Overlay */}
       <div className="absolute inset-0 bg-black/40"></div>
 
@@ -15,7 +18,7 @@ export default function Contact() {
         </div>
 
         {/* Grid */}
-        <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-20">
+        <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-20">
           {/* Forma */}
           <form className="fade-trigger space-y-6">
             <div className="flex flex-col">
@@ -52,7 +55,7 @@ export default function Contact() {
 
             <button
               type="submit"
-              className="w-full md:w-auto px-8 py-3 bg-black text-white rounded-full text-xl font-semibold hover:bg-black/90 transition-transform hover:-translate-y-1.5 cursor-pointer duration-300 border border-white/60"
+              className="flex w-full justify-center px-8 py-3 bg-black text-white rounded-full text-xl font-semibold hover:bg-black/90 transition-transform hover:-translate-y-1.5 cursor-pointer duration-300 border border-white/60"
             >
               Pošalji poruku
             </button>
@@ -64,7 +67,7 @@ export default function Contact() {
               <h3 className="text-4xl font-semibold text-white mb-2">
                 Kontakt informacije
               </h3>
-              <p className="leading-relaxed">
+              <p className="text-center leading-relaxed">
                 Slobodno nam se javite za rezervacije, dodatne informacije ili
                 posebne upite.
               </p>

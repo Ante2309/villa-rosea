@@ -1,0 +1,13 @@
+{
+  "nav": {
+    "apartments": "Apartmani",
+    "location": "Lokacija",
+    "contact": "Kontakt",
+    "oil": "Maslinovo ulje"
+  },
+  "hero": {
+    "title": "BEZBRIŽAN UŽITAK U BOROVOJ ŠUMI",
+    "desc": "Villa Rosea smještena je u borovoj šumi, odmah uz malenu plažu. Odmarajući se kod nas jedino što ćete čuti je zvuk mora, cvrčka i pjev ptica.",
+    "button": "Rezerviraj odmah"
+  }
+}

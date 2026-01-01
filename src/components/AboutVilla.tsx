@@ -11,7 +11,7 @@ export default function OViliSection() {
 
         <div className="w-28 h-1 bg-white/60 mx-auto rounded-full"></div>
 
-        <p className="hero-fade text-lg md:text-2xl text-white/90 leading-relaxed">
+        <p className="hero-fade text-xl md:text-2xl text-white/90 leading-relaxed">
           Naša vila sastoji se od dvije etaže s ukupno dva apartmana. Jedan je
           jednosobni apartman koji sadrži spavaću sobu i kupaonicu te može
           ugostiti do 3 osobe. Drugi je luksuzni četverosobni apartman s četiri
@@ -19,7 +19,7 @@ export default function OViliSection() {
           9 gostiju.
         </p>
 
-        <p className="hero-fade text-lg md:text-2xl text-white/90 leading-relaxed">
+        <p className="hero-fade text-xl md:text-2xl text-white/90 leading-relaxed">
           Villa Rosea smještena je u blizini Splita – grada prepunog antičkih
           remek‑djela, među kojima je i ljetna palača rimskog cara Dioklecijana
           – te u blizini Trogira, prekrasnog obalnog gradića koji su prije više
@@ -27,7 +27,7 @@ export default function OViliSection() {
           zaštitom UNESCO‑a.
         </p>
 
-        <p className="hero-fade text-lg md:text-2xl text-white/90 leading-relaxed">
+        <p className="hero-fade text-xl md:text-2xl text-white/90 leading-relaxed">
           Vaši domaćini imaju više od 20 godina iskustva u turizmu i stoje vam
           na raspolaganju 24/7, uvijek spremni pomoći kako bi vaš boravak bio
           nezaboravan.

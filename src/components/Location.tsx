@@ -1,6 +1,9 @@
 export default function Location() {
   return (
-    <section className="w-full bg-white mb-24 py-24 px-6 md:px-32">
+    <section
+      id="lokacija"
+      className="w-full bg-white mb-24 py-24 px-6 md:px-32"
+    >
       {/* Naslov */}
       <div className="fade-trigger flex flex-col items-center space-y-6 mb-16">
         <h2 className="fade-trigger text-4xl md:text-5xl font-bold text-black">
@@ -13,7 +16,7 @@ export default function Location() {
       <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-20 items-center ">
         {/* Tekst */}
         <div className="fade-trigger space-y-6">
-          <p className="text-lg md:text-xl lg:text-2xl text-gray-700 leading-relaxed">
+          <p className="text-xl md:text-2xl  text-gray-700 leading-relaxed">
             Villa Rosea nalazi se u mirnom priobalnom naselju između Splita i
             Trogira, dvaju UNESCO dragulja udaljenih svega nekoliko minuta
             vožnje. Smještena je u tihoj ulici okruženoj borovom šumom, idealnoj
@@ -23,7 +26,7 @@ export default function Location() {
 
           <div className="w-full h-px bg-gray-300"></div>
 
-          <p className="text-lg md:text-xl lg:text-2xl text-gray-700 leading-relaxed">
+          <p className="text-xl md:text-2xl text-gray-700 leading-relaxed">
             Split je poznat po Dioklecijanovoj palači i bogatoj povijesti, dok
             je Trogir jedan od najljepših primorskih gradića na Jadranu, osnovan
             prije više od dvije tisuće godina. Lokacija vile omogućuje savršenu

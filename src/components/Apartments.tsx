@@ -28,7 +28,10 @@ const maliImages = [m1, m2, m3, m4, m5, m6, m7, m8, m9, m10];
 
 export default function Apartments() {
   return (
-    <section className="relative w-full bg-white px-6 md:px-16 mt-24">
+    <section
+      id="apartmani"
+      className="relative w-full bg-white px-6 md:px-16 mt-24"
+    >
       {/* Naslov */}
       <div className=" flex flex-col justify-center items-center space-y-10">
         <h2 className="fade-trigger text-center text-4xl md:text-5xl font-bold text-black">
@@ -57,7 +60,7 @@ export default function Apartments() {
                 Apartman 1
               </h3>
 
-              <p className="text-lg md:text-xl text-gray-700 min-h-[96px]">
+              <p className="text-xl md:text-2xl text-gray-700 min-h-[96px]">
                 Prostrani apartman idealan za obitelji. Dvije spavaće sobe,
                 moderna kuhinja, kupaonica i velika terasa s pogledom na borovu
                 šumu i more.
@@ -165,7 +168,7 @@ export default function Apartments() {
                 Apartman 2
               </h3>
 
-              <p className="fade-trigger text-lg md:text-xl text-gray-700 min-h-[96px]">
+              <p className="fade-trigger text-xl md:text-2xl text-gray-700 min-h-[96px]">
                 Moderan apartman za parove ili male obitelji. Terasa, elegantan
                 interijer, izlaz na bazen i potpuni mir borove šume.
               </p>

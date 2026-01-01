@@ -1,0 +1,13 @@
+{
+  "nav": {
+    "apartments": "Apartments",
+    "location": "Location",
+    "contact": "Contact",
+    "oil": "Olive Oil"
+  },
+  "hero": {
+    "title": "CAREFREE ENJOYMENT IN A PINE FOREST",
+    "desc": "Villa Rosea is located in a pine forest, right next to a small hidden beach. While staying with us, the only things you will hear are the sound of the sea, cicadas, and birdsong.",
+    "button": "Book now"
+  }
+}

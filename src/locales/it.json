@@ -1,0 +1,13 @@
+{
+  "nav": {
+    "apartments": "Appartamenti",
+    "location": "Posizione",
+    "contact": "Contatto",
+    "oil": "Olio d'oliva"
+  },
+  "hero": {
+    "title": "PIACERE SENZA PENSIERI NELLA PINETA",
+    "desc": "Villa Rosea si trova in una pineta, proprio accanto a una piccola spiaggia nascosta. Durante il soggiorno da noi sentirai solo il suono del mare, delle cicale e il canto degli uccelli.",
+    "button": "Prenota ora"
+  }
+}
